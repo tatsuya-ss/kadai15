@@ -39,7 +39,6 @@ final class CheckTableViewController: UITableViewController {
             return
         }
         self.fruits[indexPath.row]["isChecked"] = !fruitCheck
-        print(self.fruits)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
