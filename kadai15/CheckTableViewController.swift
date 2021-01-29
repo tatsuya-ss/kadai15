@@ -8,12 +8,19 @@
 import UIKit
 
 final class CheckTableViewController: UITableViewController {
-    private var fruits = [
-        ["Name": "りんご", "isChecked": true],
-        ["Name": "ばなな", "isChecked": false],
-        ["Name": "みかん", "isChecked": true],
-        ["Name": "パイナップル", "isChecked": false]
+    private var fruits = [  // ここで構造体Fruitを初期化して使用してる。
+        Fruit(name: "りんご", isChecked: true),
+        Fruit(name: "ばなな", isChecked: false),
+        Fruit(name: "みかん", isChecked: true),
+        Fruit(name: "パイナップル", isChecked: false)
     ]
+
+//    private var fruits = [
+//        ["Name": "りんご", "isChecked": true],
+//        ["Name": "ばなな", "isChecked": false],
+//        ["Name": "みかん", "isChecked": true],
+//        ["Name": "パイナップル", "isChecked": false]
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +34,23 @@ final class CheckTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
 
-        let fruit = fruits[indexPath.row]
+        cell.configure(fruit: fruits[indexPath.row])  // configure()はnameとisCheckedを使って定義されているので、fruis[indexPath.row]を打ち込むだけ
 
-        cell.configure(isChecked: fruit["isChecked"] as! Bool, name: fruit["Name"] as! String)
+//        let fruit = fruits[indexPath.row]
+//        cell.configure(isChecked: fruit["isChecked"] as! Bool, name: fruit["Name"] as! String)
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let fruitCheck = self.fruits[indexPath.row]["isChecked"] as? Bool else {
-            return
-        }
-        self.fruits[indexPath.row]["isChecked"] = !fruitCheck
+        var fruit = fruits[indexPath.row]
+        fruit.isChecked.toggle()  // toggle()でBool値の反転を行う！すご！！！
+        fruits[indexPath.row] = fruit
+
+//        guard let fruitCheck = self.fruits[indexPath.row]["isChecked"] as? Bool else {
+//            return
+//        }
+//        self.fruits[indexPath.row]["isChecked"] = !fruitCheck
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
@@ -47,7 +59,9 @@ final class CheckTableViewController: UITableViewController {
 
     @IBAction private func exit(segue: UIStoryboardSegue) {
         let addVC = segue.source as! AddViewController
-        fruits.append(addVC.fruitAdd)
+        guard let fruit = addVC.fruitAdd else {return}
+        fruits.append(fruit)
+//        fruits.append(addVC.fruitAdd)
         tableView.reloadData()
     }
 }
