@@ -38,6 +38,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="0VL-DW-tuo" kind="presentation" identifier="Detail" modalPresentationStyle="fullScreen" id="mtQ-aq-VFm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVf-z0-d4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,6 +91,51 @@
             </objects>
             <point key="canvasLocation" x="2917" y="82"/>
         </scene>
+        <!--Change View Controller-->
+        <scene sceneID="uZz-P9-ROJ">
+            <objects>
+                <viewController id="MNQ-7c-lgO" customClass="ChangeViewController" customModule="kadai15" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dKN-5u-6HR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mcj-1X-rcG">
+                                <rect key="frame" x="80" y="175" width="254" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qqJ-cI-9t6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qqJ-cI-9t6" firstAttribute="trailing" secondItem="Mcj-1X-rcG" secondAttribute="trailing" constant="80" id="bk4-W2-Lmp"/>
+                            <constraint firstItem="Mcj-1X-rcG" firstAttribute="leading" secondItem="qqJ-cI-9t6" secondAttribute="leading" constant="80" id="fNK-Rj-1mR"/>
+                            <constraint firstItem="Mcj-1X-rcG" firstAttribute="top" secondItem="qqJ-cI-9t6" secondAttribute="top" constant="87" id="gjI-Qq-rlY"/>
+                            <constraint firstItem="Mcj-1X-rcG" firstAttribute="centerX" secondItem="qqJ-cI-9t6" secondAttribute="centerX" id="r61-PR-pUY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="P0g-Qv-h9j">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m6I-5q-uEz">
+                            <connections>
+                                <segue destination="gxv-CG-wRO" kind="unwind" unwindAction="cancelWithSegue:" id="f2n-PX-3Dz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8WW-xP-mrH">
+                            <connections>
+                                <action selector="changeSaveButton:" destination="MNQ-7c-lgO" id="dfP-00-8yd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="changeTextLabel" destination="Mcj-1X-rcG" id="9zu-bZ-ap8"/>
+                        <segue destination="gxv-CG-wRO" kind="unwind" identifier="change" unwindAction="changeWithSegue:" id="7gk-K5-79b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EF-fA-z24" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gxv-CG-wRO" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2916" y="785"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="hmJ-YS-g5T">
             <objects>
@@ -123,6 +171,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osY-ql-a56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2068" y="82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T5T-iR-k6W">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0VL-DW-tuo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hAA-Xd-fZn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MNQ-7c-lgO" kind="relationship" relationship="rootViewController" id="Srs-kO-5wV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ND-wB-pu0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2067" y="785"/>
         </scene>
     </scenes>
     <resources>

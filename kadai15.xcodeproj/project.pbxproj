@@ -18,6 +18,7 @@
 		755DE1D725C047A7006B92CB /* fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DE1D625C047A7006B92CB /* fruits.swift */; };
 		755DE1DC25C04E8E006B92CB /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DE1DB25C04E8E006B92CB /* AddViewController.swift */; };
 		7560BCDC25C2E65E003B50E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7560BCDB25C2E65E003B50E2 /* .swiftlint.yml */; };
+		7565946025C6A4B800C4F9B8 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7565945F25C6A4B800C4F9B8 /* ChangeViewController.swift */; };
 		B32334DFE71ADEACA8A95B4A /* Pods_kadai15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF1BBA35A5BBC7469AE3356 /* Pods_kadai15.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		755DE1D625C047A7006B92CB /* fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fruits.swift; sourceTree = "<group>"; };
 		755DE1DB25C04E8E006B92CB /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7560BCDB25C2E65E003B50E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7565945F25C6A4B800C4F9B8 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		ABF1BBA35A5BBC7469AE3356 /* Pods_kadai15.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kadai15.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1F9644E204E42D963B1A2A /* Pods-kadai15.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kadai15.debug.xcconfig"; path = "Target Support Files/Pods-kadai15/Pods-kadai15.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				755DE1CD25C045A5006B92CB /* CheckTableViewController.swift */,
 				755DE1DB25C04E8E006B92CB /* AddViewController.swift */,
 				755DE1D025C04629006B92CB /* TableViewCell.swift */,
+				7565945F25C6A4B800C4F9B8 /* ChangeViewController.swift */,
 				755DE1D625C047A7006B92CB /* fruits.swift */,
 				755DE1D125C04629006B92CB /* TableViewCell.xib */,
 				755DE1BD25C04565006B92CB /* Main.storyboard */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7565946025C6A4B800C4F9B8 /* ChangeViewController.swift in Sources */,
 				755DE1B825C04565006B92CB /* AppDelegate.swift in Sources */,
 				755DE1D725C047A7006B92CB /* fruits.swift in Sources */,
 				755DE1DC25C04E8E006B92CB /* AddViewController.swift in Sources */,

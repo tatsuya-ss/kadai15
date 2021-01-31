@@ -12,10 +12,6 @@ final class AddViewController: UIViewController {
     private(set) var fruitAdd: Fruit?
 
     @IBAction private func saveButton(_ sender: Any) {
-//        var fruits = Fruit()
-//        fruits.name = addText.text!
-//        fruitAdd = fruits.dictionary()
-
         fruitAdd = Fruit(name: addText.text ?? "", isChecked: false)  // 構造体の定義を使用して
         performSegue(withIdentifier: "exit", sender: nil)
     }
