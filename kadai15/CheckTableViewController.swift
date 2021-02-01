@@ -15,7 +15,7 @@ final class CheckTableViewController: UITableViewController {
         Fruit(name: "パイナップル", isChecked: false)
     ]
 
-    private var changeIndex = 0
+    private(set) var changeIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,8 @@ final class CheckTableViewController: UITableViewController {
     }
 
     @IBAction private func change(segue: UIStoryboardSegue) {
-        let chabgeVC = segue.source as! ChangeViewController
-        fruits[changeIndex].name = chabgeVC.change
+        let changeVC = segue.source as! ChangeViewController
+        fruits[changeIndex] = Fruit(name: changeVC.change, isChecked: fruits[changeIndex].isChecked)  // isCheckedはそのまま
         tableView.reloadData()
     }
 

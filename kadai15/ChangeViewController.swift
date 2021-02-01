@@ -10,11 +10,7 @@ import UIKit
 class ChangeViewController: UIViewController {
     @IBOutlet weak private var changeTextLabel: UITextField!
     private(set) var change = ""
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
     @IBAction private func changeSaveButton(_ sender: Any) {
         change = changeTextLabel.text ?? ""
         performSegue(withIdentifier: "change", sender: nil)
