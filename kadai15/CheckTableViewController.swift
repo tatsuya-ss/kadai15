@@ -15,7 +15,7 @@ final class CheckTableViewController: UITableViewController {
         Fruit(name: "パイナップル", isChecked: false)
     ]
 
-    private(set) var changeIndex = 0
+    private var changeIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
