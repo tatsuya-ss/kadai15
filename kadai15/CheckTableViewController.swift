@@ -15,12 +15,7 @@ final class CheckTableViewController: UITableViewController {
         Fruit(name: "パイナップル", isChecked: false)
     ]
 
-//    private var fruits = [
-//        ["Name": "りんご", "isChecked": true],
-//        ["Name": "ばなな", "isChecked": false],
-//        ["Name": "みかん", "isChecked": true],
-//        ["Name": "パイナップル", "isChecked": false]
-//    ]
+    private var changeIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +30,6 @@ final class CheckTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
 
         cell.configure(fruit: fruits[indexPath.row])  // configure()はnameとisCheckedを使って定義されているので、fruis[indexPath.row]を打ち込むだけ
-
-//        let fruit = fruits[indexPath.row]
-//        cell.configure(isChecked: fruit["isChecked"] as! Bool, name: fruit["Name"] as! String)
-
         return cell
     }
 
@@ -46,12 +37,20 @@ final class CheckTableViewController: UITableViewController {
         var fruit = fruits[indexPath.row]
         fruit.isChecked.toggle()  // toggle()でBool値の反転を行う！すご！！！
         fruits[indexPath.row] = fruit
-
-//        guard let fruitCheck = self.fruits[indexPath.row]["isChecked"] as? Bool else {
-//            return
-//        }
-//        self.fruits[indexPath.row]["isChecked"] = !fruitCheck
         tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        changeIndex = indexPath.row
+        performSegue(withIdentifier: TableViewCell.detailIdentifier, sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == TableViewCell.detailIdentifier {
+            let nav = segue.destination as! UINavigationController
+            let addVC = nav.topViewController as! AddViewController
+            addVC.change = fruits[changeIndex]
+        }
     }
 
     @IBAction private func cancel(segue: UIStoryboardSegue) {
@@ -61,7 +60,13 @@ final class CheckTableViewController: UITableViewController {
         let addVC = segue.source as! AddViewController
         guard let fruit = addVC.fruitAdd else {return}
         fruits.append(fruit)
-//        fruits.append(addVC.fruitAdd)
+        tableView.reloadData()
+    }
+
+    @IBAction private func change(segue: UIStoryboardSegue) {
+        let addVC = segue.source as! AddViewController
+        guard let fruit = addVC.change else {return}
+        fruits[changeIndex] = fruit
         tableView.reloadData()
     }
 }

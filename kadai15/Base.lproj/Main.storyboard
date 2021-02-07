@@ -38,6 +38,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="3jm-ig-ofa" kind="presentation" identifier="detail" modalPresentationStyle="fullScreen" id="ITE-a8-mgB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVf-z0-d4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,17 +55,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efl-e4-5cH">
-                                <rect key="frame" x="80" y="172" width="254" height="34"/>
+                                <rect key="frame" x="101" y="172" width="233" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfG-Uv-0Mq">
+                                <rect key="frame" x="58" y="179" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MNy-qw-EbO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="efl-e4-5cH" firstAttribute="leading" secondItem="MNy-qw-EbO" secondAttribute="leading" constant="80" id="2GL-l0-1fd"/>
-                            <constraint firstItem="MNy-qw-EbO" firstAttribute="trailing" secondItem="efl-e4-5cH" secondAttribute="trailing" constant="80" id="hv6-uv-3Sa"/>
-                            <constraint firstItem="efl-e4-5cH" firstAttribute="centerX" secondItem="MNy-qw-EbO" secondAttribute="centerX" id="yko-mN-xEf"/>
+                            <constraint firstItem="efl-e4-5cH" firstAttribute="leading" secondItem="XfG-Uv-0Mq" secondAttribute="trailing" constant="8" symbolic="YES" id="9Cd-7C-exS"/>
+                            <constraint firstItem="MNy-qw-EbO" firstAttribute="trailing" secondItem="efl-e4-5cH" secondAttribute="trailing" constant="80" id="CN1-he-y7S"/>
+                            <constraint firstItem="XfG-Uv-0Mq" firstAttribute="top" secondItem="MNy-qw-EbO" secondAttribute="top" constant="91" id="GV9-f4-l5Q"/>
+                            <constraint firstItem="XfG-Uv-0Mq" firstAttribute="leading" secondItem="MNy-qw-EbO" secondAttribute="leading" constant="58" id="LMp-Qe-gxu"/>
                             <constraint firstItem="efl-e4-5cH" firstAttribute="top" secondItem="MNy-qw-EbO" secondAttribute="top" constant="84" id="z8e-7m-yej"/>
                         </constraints>
                     </view>
@@ -81,6 +91,7 @@
                     <connections>
                         <outlet property="addText" destination="efl-e4-5cH" id="tKj-NG-dja"/>
                         <segue destination="LwC-QU-CgM" kind="unwind" identifier="exit" unwindAction="exitWithSegue:" id="0Px-IC-G4V"/>
+                        <segue destination="LwC-QU-CgM" kind="unwind" identifier="change" unwindAction="changeWithSegue:" id="lVq-1e-8OO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPm-pW-Gav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -125,6 +136,9 @@
             <point key="canvasLocation" x="2068" y="82"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ITE-a8-mgB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
