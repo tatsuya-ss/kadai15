@@ -28,9 +28,7 @@ final class CheckTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
-
-        cell.configure(fruit: fruits[indexPath.row])  // configure()はnameとisCheckedを使って定義されているので、fruis[indexPath.row]を入れるだけ
-
+        cell.configure(fruit: fruits[indexPath.row])  // configure()はnameとisCheckedを使って定義されているので、fruis[indexPath.row]を打ち込むだけ
         return cell
     }
 
@@ -38,19 +36,20 @@ final class CheckTableViewController: UITableViewController {
         var fruit = fruits[indexPath.row]
         fruit.isChecked.toggle()  // toggle()でBool値の反転を行う！
         fruits[indexPath.row] = fruit
-
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         changeIndex = indexPath.row
-        performSegue(withIdentifier: TableViewCell.datailReuseIdentifier, sender: nil)
+        performSegue(withIdentifier: TableViewCell.detailIdentifier, sender: nil)
     }
 
-    @IBAction private func change(segue: UIStoryboardSegue) {
-        let changeVC = segue.source as! ChangeViewController
-        fruits[changeIndex] = Fruit(name: changeVC.change, isChecked: fruits[changeIndex].isChecked)  // isCheckedはそのまま
-        tableView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == TableViewCell.detailIdentifier {
+            let nav = segue.destination as! UINavigationController
+            let addVC = nav.topViewController as! AddViewController
+            addVC.change = fruits[changeIndex]
+        }
     }
 
     @IBAction private func cancel(segue: UIStoryboardSegue) {
@@ -60,6 +59,13 @@ final class CheckTableViewController: UITableViewController {
         let addVC = segue.source as! AddViewController
         guard let fruit = addVC.fruitAdd else {return}
         fruits.append(fruit)
+        tableView.reloadData()
+    }
+
+    @IBAction private func change(segue: UIStoryboardSegue) {
+        let addVC = segue.source as! AddViewController
+        guard let fruit = addVC.change else {return}
+        fruits[changeIndex] = fruit
         tableView.reloadData()
     }
 }

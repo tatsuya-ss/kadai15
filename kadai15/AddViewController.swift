@@ -10,9 +10,20 @@ import UIKit
 final class AddViewController: UIViewController {
     @IBOutlet weak private var addText: UITextField!
     private(set) var fruitAdd: Fruit?
+    var change: Fruit?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addText.text = change?.name ?? ""
+    }
 
     @IBAction private func saveButton(_ sender: Any) {
-        fruitAdd = Fruit(name: addText.text ?? "", isChecked: false)  // 構造体の定義を使用して
-        performSegue(withIdentifier: "exit", sender: nil)
+        if change != nil {
+            change?.name = addText.text ?? ""
+            performSegue(withIdentifier: "change", sender: nil)
+        } else {
+            fruitAdd = Fruit(name: addText.text ?? "", isChecked: false)  // 構造体の定義を使用して
+            performSegue(withIdentifier: "exit", sender: nil)
+        }
     }
 }

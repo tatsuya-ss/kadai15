@@ -9,7 +9,8 @@ import UIKit
 
 final class TableViewCell: UITableViewCell {
     static let reuseIdentifier = "Cell1"
-    static let datailReuseIdentifier = "Detail"
+    static let detailIdentifier = "detail"
+
     @IBOutlet private weak var checkImage: UIImageView!
     @IBOutlet private weak var memoLabel: UILabel!
     private static let imageview = UIImage(named: "check") // カプセル化する。＋　staticにする事で意図しない変更を防ぐ
