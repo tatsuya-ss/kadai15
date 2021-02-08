@@ -55,6 +55,13 @@ final class CheckTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            fruits.remove(at: indexPath.row)
+        }
+        tableView.reloadData()
+    }
+
     @IBAction private func cancel(segue: UIStoryboardSegue) {
     }
 
