@@ -25,6 +25,12 @@ final class CheckTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: TableViewCell.reuseIdentifier)
+
+        getFruits()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        setFruits()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +40,7 @@ final class CheckTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
         cell.configure(fruit: fruits[indexPath.row])  // configure()はnameとisCheckedを使って定義されているので、fruis[indexPath.row]を打ち込むだけ
+
         return cell
     }
 
@@ -78,5 +85,18 @@ final class CheckTableViewController: UITableViewController {
         guard let changeIndex = changeIndex else {return}  // ここでオプショナル型の値の存在を保証しておかないと、下で使用するときに！を使わなければいけなくなる
         fruits[changeIndex] = fruit
         tableView.reloadData()
+    }
+
+    private func setFruits() {
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(fruits) else { return }  // [Fruit]型をData型にエンコード
+        UserDefaults.standard.set(data, forKey: "fruits")
+    }
+
+    private func getFruits() {
+        let decoder = JSONDecoder()
+        guard let fruitsData = UserDefaults.standard.data(forKey: "fruits"),
+              let fruit = try? decoder.decode([Fruit].self, from: fruitsData) else { return }
+        self.fruits = fruit
     }
 }
